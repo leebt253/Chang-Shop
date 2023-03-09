@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link th:href="@{img/logo/favicon.ico}" rel="icon">
+  <title>Chang Shop - Dashboard</title>
+  <link th:href="@{vendor/fontawesome-free/css/all.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{css/admin.bootstrap.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{css/admin.css}" rel="stylesheet">
+  <link th:href="@{vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar Start -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/}"
+        style="background-color: #fff;">
+        <div class="sidebar-brand-icon">
+          <img th:src="@{img/logo/logo.png}">
+        </div>
+        <div class="sidebar-brand-text font-bold text-primary mx-3" style="font-size: 1.5rem;">Admin</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span class="font-weight-bold">Dashboard</span></a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Features
+      </div>
+      <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true"
+          aria-controls="collapseUsers">
+          <i class="fas fa-user" style="padding-left: 0.2rem;"></i>
+          <span>Users</span>
+        </a>
+        <div id="collapseUsers" class="collapse show" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Users Management</h6>
+            <a class="collapse-item active" href="#">Add new user</a>
+            <a class="collapse-item" href="#">Modify user</a>
+            <a class="collapse-item" href="#">Delete user</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+          aria-expanded="true" aria-controls="collapseCategories">
+          <i class="fas fa-book" style="padding-left: 0.2rem;"></i>
+          <span>Categories</span>
+        </a>
+        <div id="collapseCategories" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Categories Management</h6>
+            <a class="collapse-item" href="#">Add new category</a>
+            <a class="collapse-item" href="#">Modify category</a>
+            <a class="collapse-item" href="#">Delete category</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBrands" aria-expanded="true"
+          aria-controls="collapseBrands">
+          <i class="fas fa-tag" style="padding-left: 0.2rem;"></i>
+          <span>Brands</span>
+        </a>
+        <div id="collapseBrands" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Brands Management</h6>
+            <a class="collapse-item" href="#">Add new brand</a>
+            <a class="collapse-item" href="#">Modify brand</a>
+            <a class="collapse-item" href="#">Delete brand</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+          aria-expanded="true" aria-controls="collapseProducts">
+          <i class="fas fa-shopping-bag" style="padding-left: 0.2rem;"></i>
+          <span>Products</span>
+        </a>
+        <div id="collapseProducts" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Products Management</h6>
+            <a class="collapse-item" href="#">Add new product</a>
+            <a class="collapse-item" href="#">Modify product</a>
+            <a class="collapse-item" href="#">Delete product</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomers"
+          aria-expanded="true" aria-controls="collapseCustomers">
+          <i class="fas fa-user-tie" style="padding-left: 0.2rem;"></i>
+          <span>Customers</span>
+        </a>
+        <div id="collapseCustomers" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Customers Management</h6>
+            <a class="collapse-item" href="#">Add new customer</a>
+            <a class="collapse-item" href="#">Modify customer</a>
+            <a class="collapse-item" href="#">Delete customer</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Oders</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-shipping-fast"></i>
+          <span>Shipping</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Reports
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-chart-area"></i>
+          <span>Sales</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Settings
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-list"></i>
+          <span>Menus</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="version" id="dashboard-version"></div>
+    </ul>
+    <!-- Sidebar End -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar Start -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3 text-gray-700">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav ml-auto">
+            <!-- Language Selector Start -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-gray-800" href="#" id="languageDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-globe fa-fw"></i>
+                <span class="text-gray-800" style="padding-left:4px;">Eng</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="languageDropdown">
+                <a class="dropdown-item cookier" href="#">
+                  <img th:src="@{img/flags/us.png}" style="padding-right:2px;">
+                  English (US)
+                </a>
+                <a class="dropdown-item cookier" href="#">
+                  <img th:src="@{img/flags/vi.png}" style="padding-right:2px;">
+                  Vietnamese
+                </a>
+              </div>
+            </li>
+            <!-- Language Selector End -->
+
+            <!-- Search Start -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-1 small"
+                      placeholder="What do you want to look for?" aria-label="Search" aria-describedby="basic-addon2"
+                      style="border-color: #4fabb8;">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+            <!-- Search End -->
+
+            <!-- Notification Start -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter">3+</span>
+              </a>
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Notifications
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-700">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-700">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-700">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-700" href="#">Show All Alerts</a>
+              </div>
+            </li>
+            <!-- Notification End -->
+
+            <!-- Message Start -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <span class="badge badge-warning badge-counter">2</span>
+              </a>
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Messages
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" th:src="@{img/man.png}" style="max-width: 60px" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
+                      having.</div>
+                    <div class="small text-gray-700">Udin Cilok · 58m</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" th:src="@{img/girl.png}" style="max-width: 60px" alt="">
+                    <div class="status-indicator bg-default"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
+                      say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-700">Jaenab · 2w</div>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-700" href="#">Read More Messages</a>
+              </div>
+            </li>
+            <!-- Message End -->
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Profile Start -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" th:src="@{img/boy.png}" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-gray-800 small">Hi, <b>Lee</b><br />Administrator</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-700"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-700"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-700"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-700"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+            <!-- Profile End -->
+          </ul>
+        </nav>
+        <!-- Topbar End -->
+
+        <!-- Container Fluid Start -->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./" style="font-size: 14px;">Home</a></li>
+              <li class="breadcrumb-item active" style="font-size: 14px;" aria-current="page">Dashboard</li>
+            </ol>
+          </div>
+
+          <!-- Card Example End Start -->
+          <div class="row mb-3">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings (Monthly)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                        <span>Since last month</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Earnings (Annual) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                        <span>Since last years</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- New User Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                        <span>Since last month</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="mt-2 mb-0 text-muted text-xs">
+                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                        <span>Since yesterday</span>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-warning"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card Example End -->
+
+          <!-- Datatables Start -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+                </div>
+                <div class="card-content py-3 align-items-center justify-content-between">
+                  Filter by:
+                  <select class="form-control form-control-sm mb-3" style="width: 200px;">
+                    <option>ID</option>
+                    <option>Name</option>
+                    <option>Age</option>
+                    <option>Height</option>
+                    <option>Place of Birth</option>
+                    <option>Year Active</option>
+                  </select>
+                </div>
+                <div class="table-responsive p-3" style="margin-top: -1.25rem;">
+                  <table class="table align-items-center table-flush table-hover" id="dataTable">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Height</th>
+                        <th>Place of Birth</th>
+                        <th>Year Active</th>
+                        <th class="sorting_asc_disabled sorting_desc_disabled"
+                          style="pointer-events: none; width: 130px;"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Adriana Chechik</td>
+                        <td>31</td>
+                        <td>157 cm</td>
+                        <td>Pennsylvania, United States</td>
+                        <td>2013</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Belle Delphine</td>
+                        <td>23</td>
+                        <td>168 cm</td>
+                        <td>Cape Town, South Africa</td>
+                        <td>2016</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Lola Taylor</td>
+                        <td>28</td>
+                        <td>157 cm</td>
+                        <td>Moscow, Russian</td>
+                        <td>2013</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Rosa Caracciolo</td>
+                        <td>50</td>
+                        <td>168 cm</td>
+                        <td>Budapest, Hungary</td>
+                        <td>1993</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Kaity Nguyễn</td>
+                        <td>23</td>
+                        <td>150 cm</td>
+                        <td>HCM City, Vietnam</td>
+                        <td>2017</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>Bobbi Starr</td>
+                        <td>39</td>
+                        <td>173 cm</td>
+                        <td>California, United States</td>
+                        <td>2010</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>Suzu Honjō</td>
+                        <td>26</td>
+                        <td>163 cm</td>
+                        <td>Yamanashi, Japan</td>
+                        <td>2018</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>Anny Aurora</td>
+                        <td>26</td>
+                        <td>172 cm</td>
+                        <td>Cologne, Germany</td>
+                        <td>2015</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>Fanny Trần</td>
+                        <td>24</td>
+                        <td>160 cm</td>
+                        <td>HCM City, Vietnam</td>
+                        <td>2015</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>Kana Momonogi</td>
+                        <td>26</td>
+                        <td>153 cm</td>
+                        <td>Tokyo, Japan</td>
+                        <td>2015</td>
+                        <td>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Add new"><i
+                              class="fas fa-plus"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Modify"><i
+                              class="fas fa-pen"></i></button>
+                          <button type="button" class="btn-action text-gray-600 mb-1 pl-lg-1" title="Delete"><i
+                              class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Datatables End -->
+
+          <!-- Buttons Start -->
+          <div class="row">
+            <!-- Basic Button -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Basic Buttons</h6>
+                </div>
+                <div class="card-body">
+                  <p>Bootstrap includes several predefined button styles, each serving its own
+                    semantic purpose, with a
+                    few extras thrown in for more control.</p>
+                  <button type="button" class="btn btn-primary mb-1">Primary</button>
+                  <button type="button" class="btn btn-secondary mb-1">Secondary</button>
+                  <button type="button" class="btn btn-success mb-1">Success</button>
+                  <button type="button" class="btn btn-danger mb-1">Danger</button>
+                  <button type="button" class="btn btn-warning mb-1">Warning</button>
+                  <button type="button" class="btn btn-info mb-1">Info</button>
+                  <button type="button" class="btn btn-light mb-1">Light</button>
+                  <button type="button" class="btn btn-dark mb-1">Dark</button>
+                  <button type="button" class="btn btn-link">Link</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Outline Buttons -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Outline Buttons</h6>
+                </div>
+                <div class="card-body">
+                  <p>In need of a button, but not the hefty background colors they bring? Replace the
+                    default modifier
+                    classes with the <code class="highlighter-rouge">.btn-outline-*</code> ones to
+                    remove all background
+                    images and colors on any button.</p>
+                  <button type="button" class="btn btn-outline-primary mb-1">Primary</button>
+                  <button type="button" class="btn btn-outline-secondary mb-1">Secondary</button>
+                  <button type="button" class="btn btn-outline-success mb-1">Success</button>
+                  <button type="button" class="btn btn-outline-danger mb-1">Danger</button>
+                  <button type="button" class="btn btn-outline-warning mb-1">Warning</button>
+                  <button type="button" class="btn btn-outline-info mb-1">Info</button>
+                  <button type="button" class="btn btn-outline-light mb-1">Light</button>
+                  <button type="button" class="btn btn-outline-dark mb-1">Dark</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <!-- Sizing Buttons -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Sizing Buttons</h6>
+                </div>
+                <div class="card-body">
+                  <p>Use Font Awesome Icons (included with this theme package) along with the sizing buttons as shown in
+                    the examples below!</p>
+                  <!-- Buttons (Default) -->
+                  <div class="mb-2">
+                    <code>.btn</code> only
+                  </div>
+                  <a href="#" class="btn btn-primary">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="btn btn-success">
+                    <i class="fas fa-check"></i>
+                  </a>
+                  <a href="#" class="btn btn-info">
+                    <i class="fas fa-info-circle"></i>
+                  </a>
+                  <a href="#" class="btn btn-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </a>
+                  <a href="#" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                  <!-- Buttons (Small) -->
+                  <div class="mt-4 mb-2">
+                    with <code>.btn-sm</code>
+                  </div>
+                  <a href="#" class="btn btn-primary btn-sm">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="btn btn-success btn-sm">
+                    <i class="fas fa-check"></i>
+                  </a>
+                  <a href="#" class="btn btn-info btn-sm">
+                    <i class="fas fa-info-circle"></i>
+                  </a>
+                  <a href="#" class="btn btn-warning btn-sm">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </a>
+                  <a href="#" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                  <!-- Buttons (Large) -->
+                  <div class="mt-4 mb-2">
+                    with <code>.btn-lg</code>
+                  </div>
+                  <a href="#" class="btn btn-primary btn-lg">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="btn btn-success btn-lg">
+                    <i class="fas fa-check"></i>
+                  </a>
+                  <a href="#" class="btn btn-info btn-lg">
+                    <i class="fas fa-info-circle"></i>
+                  </a>
+                  <a href="#" class="btn btn-warning btn-lg">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </a>
+                  <a href="#" class="btn btn-danger btn-lg">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </div>
+              <!-- Brand Buttons -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Brand Buttons</h6>
+                </div>
+                <div class="card-body">
+                  <p>Google and Facebook buttons are available featuring each company's respective
+                    brand color. They are used on the user login and registration pages.</p>
+                  <p>You can create more custom buttons by adding a new color variable in the
+                    <code>_variables.scss</code> file and then using the Bootstrap button variant mixin to create a new
+                    style, as demonstrated in the <code>_buttons.scss</code> file.
+                  </p>
+                  <a href="#" class="btn btn-google btn-block"><i class="fab fa-google fa-fw"></i>.btn-google</a>
+                  <a href="#" class="btn btn-facebook btn-block"><i
+                      class="fab fa-facebook-f fa-fw"></i>.btn-facebook</a>
+                </div>
+              </div>
+            </div>
+            <!-- Split Buttons with Icon -->
+            <div class="col-lg-6">
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Split Buttons with Icon</h6>
+                </div>
+                <div class="card-body">
+                  <p>Works with any button colors, just use the <code>.btn-icon-split</code> class and
+                    the markup in the
+                    examples below. The examples below also use the <code>.text-white-50</code>
+                    helper class on the
+                    icons for additional styling, but it is not required.</p>
+                  <a href="#" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Split Button Primary</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Split Button Success</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Split Button Info</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-warning btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    <span class="text">Split Button Warning</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-trash"></i>
+                    </span>
+                    <span class="text">Split Button Danger</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-secondary btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="text">Split Button Secondary</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-light btn-icon-split">
+                    <span class="icon text-gray-600">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="text">Split Button Primary</span>
+                  </a>
+                  <div class="mb-4"></div>
+                  <p>Also works with small and large button classes!</p>
+                  <a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Split Button Small</span>
+                  </a>
+                  <div class="my-2"></div>
+                  <a href="#" class="btn btn-primary btn-icon-split btn-lg">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-flag"></i>
+                    </span>
+                    <span class="text">Split Button Large</span>
+                  </a>
+                </div>
+              </div>
+              <!-- Disabled Buttons -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Disabled Buttons</h6>
+                </div>
+                <div class="card-body">
+                  <p>Make buttons look inactive by adding the <code class="highlighter-rouge">disabled</code> boolean
+                    attribute to any <code class="highlighter-rouge">&lt;button&gt;</code> element.
+                  </p>
+                  <button type="button" class="btn btn-primary mb-1" disabled>Primary</button>
+                  <button type="button" class="btn btn-secondary mb-1" disabled>Secondary</button>
+                  <button type="button" class="btn btn-success mb-1" disabled>Success</button>
+                  <button type="button" class="btn btn-danger mb-1" disabled>Danger</button>
+                  <button type="button" class="btn btn-warning mb-1" disabled>Warning</button>
+                  <button type="button" class="btn btn-info mb-1" disabled>Info</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Buttons End -->
+
+          <!-- Form Start -->
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- Form Basic -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your
+                        email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Form Sizing -->
+              <div class="card mb-3">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Sizing</h6>
+                </div>
+                <div class="card-body">
+                  <p>Set heights using classes like <code class="highlighter-rouge">.form-control-lg</code> and <code
+                      class="highlighter-rouge">.form-control-sm</code>.</p>
+                  <p>Example for form general</p>
+                  <input class="form-control form-control-lg mb-3" type="text" placeholder=".form-control-lg">
+                  <input class="form-control  mb-3" type="text" placeholder="Default input">
+                  <input class="form-control form-control-sm  mb-3" type="text" placeholder=".form-control-sm">
+                  <p>Example for Select</p>
+                  <select class="form-control form-control-lg  mb-3">
+                    <option>Large select</option>
+                  </select>
+                  <select class="form-control mb-3">
+                    <option>Default select</option>
+                  </select>
+                  <select class="form-control form-control-sm mb-3">
+                    <option>Small select</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Horizontal Form -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Horizontal Form</h6>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      </div>
+                    </div>
+                    <fieldset class="form-group">
+                      <div class="row">
+                        <legend class="col-form-label col-sm-3 pt-0">Radios</legend>
+                        <div class="col-sm-9">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadio1">First Radio</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadio2">Second Radio</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" name="radioDisabled" id="customRadioDisabled1"
+                              class="custom-control-input" disabled>
+                            <label class="custom-control-label" for="customRadioDisabled1">Third Radio Disabled</label>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <div class="form-group row">
+                      <div class="col-sm-3">Checkbox</div>
+                      <div class="col-sm-9">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1">
+                          <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Select2 -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Select2</h6>
+                </div>
+                <div class="card-body">
+                  <p>Select2 is a jQuery based replacement for select boxes</p>
+                  <div class="form-group">
+                    <label for="select2Single">Single Select Box</label>
+                    <select class="select2-single form-control" name="state" id="select2Single">
+                      <option value="">Select</option>
+                      <option value="Aceh">Aceh</option>
+                      <option value="Sumatra Utara">Sumatra Utara</option>
+                      <option value="Sumatra Barat">Sumatra Barat</option>
+                      <option value="Riau">Riau</option>
+                      <option value="Kepulauan Riau">Kepulauan Riau</option>
+                      <option value="Jambi">Jambi</option>
+                      <option value="Bengkulu">Bengkulu</option>
+                      <option value="Sumatra Selatan">Sumatra Selatan</option>
+                      <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                      <option value="Lampung">Lampung</option>
+                      <option value="Banten">Banten</option>
+                      <option value="Jawa Barat">Jawa Barat</option>
+                      <option value="Jakarta">Jakarta</option>
+                      <option value="Jawa Tengah">Jawa Tengah</option>
+                      <option value="Yogyakarta">Yogyakarta</option>
+                      <option value="Jawa TImur">Jawa Timur</option>
+                      <option value="Bali">Bali</option>
+                      <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                      <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                      <option value="Kalimantan Barat">Kalimantan Barat</option>
+                      <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                      <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                      <option value="Kalimantan Timur">Kalimantan Timur</option>
+                      <option value="Kalimantan Utara">Kalimantan Utara</option>
+                      <option value="Gorontalo">Gorontalo</option>
+                      <option value="Sulawaesi Barat">Sulawesi Barat</option>
+                      <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                      <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                      <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                      <option value="Sulawesi Utara">Sulawesi Utara</option>
+                      <option value="Maluku">Maluku</option>
+                      <option value="Maluku Utara">Maluku Utara</option>
+                      <option value="Papua Barat">Papua Barat</option>
+                      <option value="Papua">Papua</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="select2SinglePlaceholder">Single Select Box with Placeholder</label>
+                    <select class="select2-single-placeholder form-control" name="state" id="select2SinglePlaceholder">
+                      <option value="">Select</option>
+                      <option value="Aceh">Aceh</option>
+                      <option value="Sumatra Utara">Sumatra Utara</option>
+                      <option value="Sumatra Barat">Sumatra Barat</option>
+                      <option value="Riau">Riau</option>
+                      <option value="Kepulauan Riau">Kepulauan Riau</option>
+                      <option value="Jambi">Jambi</option>
+                      <option value="Bengkulu">Bengkulu</option>
+                      <option value="Sumatra Selatan">Sumatra Selatan</option>
+                      <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                      <option value="Lampung">Lampung</option>
+                      <option value="Banten">Banten</option>
+                      <option value="Jawa Barat">Jawa Barat</option>
+                      <option value="Jakarta">Jakarta</option>
+                      <option value="Jawa Tengah">Jawa Tengah</option>
+                      <option value="Yogyakarta">Yogyakarta</option>
+                      <option value="Jawa TImur">Jawa Timur</option>
+                      <option value="Bali">Bali</option>
+                      <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                      <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                      <option value="Kalimantan Barat">Kalimantan Barat</option>
+                      <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                      <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                      <option value="Kalimantan Timur">Kalimantan Timur</option>
+                      <option value="Kalimantan Utara">Kalimantan Utara</option>
+                      <option value="Gorontalo">Gorontalo</option>
+                      <option value="Sulawaesi Barat">Sulawesi Barat</option>
+                      <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                      <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                      <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                      <option value="Sulawesi Utara">Sulawesi Utara</option>
+                      <option value="Maluku">Maluku</option>
+                      <option value="Maluku Utara">Maluku Utara</option>
+                      <option value="Papua Barat">Papua Barat</option>
+                      <option value="Papua">Papua</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="select2Multiple">Multiple-Select Boxes (pillbox)</label>
+                    <select class="select2-multiple form-control" name="states[]" multiple="multiple"
+                      id="select2Multiple">
+                      <option value="">Select</option>
+                      <option value="Aceh">Aceh</option>
+                      <option value="Sumatra Utara">Sumatra Utara</option>
+                      <option value="Sumatra Barat">Sumatra Barat</option>
+                      <option value="Riau">Riau</option>
+                      <option value="Kepulauan Riau" selected>Kepulauan Riau</option>
+                      <option value="Jambi">Jambi</option>
+                      <option value="Bengkulu">Bengkulu</option>
+                      <option value="Sumatra Selatan">Sumatra Selatan</option>
+                      <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                      <option value="Lampung">Lampung</option>
+                      <option value="Banten">Banten</option>
+                      <option value="Jawa Barat" selected>Jawa Barat</option>
+                      <option value="Jakarta">Jakarta</option>
+                      <option value="Jawa Tengah">Jawa Tengah</option>
+                      <option value="Yogyakarta">Yogyakarta</option>
+                      <option value="Jawa TImur">Jawa Timur</option>
+                      <option value="Bali">Bali</option>
+                      <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                      <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                      <option value="Kalimantan Barat">Kalimantan Barat</option>
+                      <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                      <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                      <option value="Kalimantan Timur">Kalimantan Timur</option>
+                      <option value="Kalimantan Utara">Kalimantan Utara</option>
+                      <option value="Gorontalo">Gorontalo</option>
+                      <option value="Sulawaesi Barat">Sulawesi Barat</option>
+                      <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                      <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                      <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                      <option value="Sulawesi Utara">Sulawesi Utara</option>
+                      <option value="Maluku">Maluku</option>
+                      <option value="Maluku Utara">Maluku Utara</option>
+                      <option value="Papua Barat">Papua Barat</option>
+                      <option value="Papua">Papua</option>
+                    </select>
+                  </div>
+                  <p>For documentations Select2 you can visit <a href="https://select2.org/" target="_blank">here.</a>
+                  </p>
+                </div>
+              </div>
+              <!-- TouchSpin -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">TouchSpin</h6>
+                </div>
+                <div class="card-body">
+                  <p>A mobile and touch friendly input spinner component for Bootstrap 3. It supports the mousewheel and
+                    the up/down keys.</p>
+                  <div class="form-group">
+                    <label for="touchSpin1">Simpel TouchSpin</label>
+                    <input id="touchSpin1" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="touchSpin2">TouchSpin with Prefix</label>
+                    <input id="touchSpin2" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="touchSpin3">TouchSpin with Vertical Button</label>
+                    <input id="touchSpin3" type="text" class="form-control">
+                  </div>
+                  <p>For documentations TouchSpin you can visit <a
+                      href="https://github.com/istvan-ujjmeszaros/bootstrap-touchspin" target="_blank">here.</a></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <!-- General Element -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">General Element</h6>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Email address</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Example select</label>
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect2">Example multiple select</label>
+                      <select multiple class="form-control" id="exampleFormControlSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Example textarea</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlReadonly">Readonly</label>
+                      <input class="form-control" type="text" placeholder="Readonly input here..."
+                        id="exampleFormControlReadonly" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="validationServer01">Input with Success</label>
+                      <input type="text" class="form-control is-valid" id="validationServer01"
+                        placeholder="Input with Success" value="Mark" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="validationServer03">Input with Error</label>
+                      <input type="text" class="form-control is-invalid" id="validationServer03"
+                        placeholder="Input with Error" required>
+                      <div class="invalid-feedback">
+                        Please provide a valid city.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Checkbox</label>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label" for="customCheck2">Check this custom checkbox 1</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                        <label class="custom-control-label" for="customCheck3">Check this custom checkbox 2</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheckDisabled1" disabled>
+                        <label class="custom-control-label" for="customCheckDisabled1">Check this custom
+                          checkbox</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Radio Button</label>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio3">Toggle this custom radio</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio4">Or toggle this other custom radio</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" name="radioDisabled" id="customRadioDisabled2" class="custom-control-input"
+                          disabled>
+                        <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Switches</label>
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                      </div>
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
+                        <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- Input Group -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Input Group</h6>
+                </div>
+                <div class="card-body">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                      aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Recipient's username"
+                      aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2">@example.com</span>
+                    </div>
+                  </div>
+                  <label for="basic-url">Your vanity URL</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                    </div>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                      <span class="input-group-text">.00</span>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">With textarea</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                  </div>
+                </div>
+              </div>
+              <!-- Date Picker -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Date Picker</h6>
+                </div>
+                <div class="card-body">
+                  <p>Simple and easy select a time for a text input using your mouse.</p>
+                  <div class="form-group" id="simple-date1">
+                    <label for="simpleDataInput">Simple Data Input</label>
+                    <div class="input-group date">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                      </div>
+                      <input type="text" class="form-control" value="01/06/2020" id="simpleDataInput">
+                    </div>
+                  </div>
+                  <div class="form-group" id="simple-date2">
+                    <label for="oneYearView">One Year View</label>
+                    <div class="input-group date">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                      </div>
+                      <input type="text" class="form-control" value="01/06/2020" id="oneYearView">
+                    </div>
+                  </div>
+                  <div class="form-group" id="simple-date3">
+                    <label for="decadeView">Decade View</label>
+                    <div class="input-group date">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                      </div>
+                      <input type="text" class="form-control" value="01/06/2020" id="decadeView">
+                    </div>
+                  </div>
+                  <div class="form-group" id="simple-date4">
+                    <label for="dateRangePicker">Range Select</label>
+                    <div class="input-daterange input-group">
+                      <input type="text" class="input-sm form-control" name="start" />
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">to</span>
+                      </div>
+                      <input type="text" class="input-sm form-control" name="end" />
+                    </div>
+                  </div>
+                  <p>For documentations Bootstrap Datepicker you can visit <a
+                      href="https://github.com/uxsolutions/bootstrap-datepicker" target="_blank">here.</a></p>
+                </div>
+              </div>
+              <!-- Clock Picker -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">ClockPicker</h6>
+                </div>
+                <div class="card-body">
+                  <p>A clock-style timepicker for Bootstrap (or jQuery).</p>
+                  <div class="form-group">
+                    <label for="clockPicker1">Simple ClockPicker</label>
+                    <div class="input-group clockpicker" id="clockPicker1">
+                      <input type="text" class="form-control" value="06:30">
+                      <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="clockPicker2">Simple ClockPicker with Auto Close</label>
+                    <div class="input-group clockpicker" id="clockPicker2">
+                      <input type="text" class="form-control" value="12:30">
+                      <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="clockPicker2">ClockPicker with Auto Check Minutes</label>
+                    <div class="input-group" id="clockPicker3">
+                      <input class="form-control" placeholder="Now" value="">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" id="check-minutes">Check the Minutes</button>
+                      </div>
+                    </div>
+                  </div>
+                  <p>For documentations Clockpicker you can visit <a href="http://weareoutman.github.io/clockpicker/"
+                      target="_blank">here.</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Form End -->
+
+          <!-- Dropdown Basic and Sizing Start -->
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- Dropdown Basics -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdowns Basic</h6>
+                </div>
+                <div class="card-body">
+                  <p> Any single <code class="highlighter-rouge">.btn</code> can be turned into a dropdown toggle with
+                    some markup changes. Here’s how you can put them to work with either <code
+                      class="highlighter-rouge">&lt;button&gt;</code> elements: </p>
+                  <div class="dropdown mb-3">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown button
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                  <!---Dropdown with link-->
+                  <p>And with <code class="highlighter-rouge">&lt;a&gt;</code> elements:</p>
+                  <div class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown link </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <!-- Dropdowns Sizing -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdowns Sizing</h6>
+                </div>
+                <div class="card-body">
+                  <p>Button dropdowns work with buttons of all sizes, including default and split dropdown buttons.</p>
+                  <!-- Large button groups (default and split) -->
+                  <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Large button
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-lg" type="button">
+                      Large split button
+                    </button>
+                    <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                  <!-- Small button groups (default and split) -->
+                  <div class="btn-group">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Small button
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                  <div class="btn-group">
+                    <button class="btn btn-primary btn-sm" type="button">
+                      Small split button
+                    </button>
+                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Dropdown Basic with Color -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdown Basic with Color</h6>
+                </div>
+                <div class="card-body">
+                  <p>The best part is you can do this with any button variant, too:</p>
+                  <!-- Example single danger button -->
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Primary
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Secondary
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Success
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Info
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Warning
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Danger
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- Dropdown split button with Color -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdown Split Button with Color</h6>
+                </div>
+                <div class="card-body">
+                  <p>Similarly, create split button dropdowns with virtually the same markup as single button dropdowns,
+                    but with the addition of <code class="highlighter-rouge">.dropdown-toggle-split</code> for proper
+                    spacing around the dropdown caret.</p>
+                  <p>We use this extra class to reduce the horizontal <code class="highlighter-rouge">padding</code> on
+                    either side of the caret by 25% and remove the <code class="highlighter-rouge">margin-left</code>
+                    that’s added for regular button dropdowns. Those extra changes keep the caret centered in the split
+                    button and provide a more appropriately sized hit area next to the main button.</p>
+                  <!-- Example single danger button -->
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-secondary">Secondary</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-success">Success</button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-info">Info</button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-warning">Warning</button>
+                    <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                  <div class="btn-group mb-1">
+                    <button type="button" class="btn btn-danger">Danger</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Dropdown with Directions -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdown with Directions</h6>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <h6 class="font-weight-bold">Dropup</h6>
+                      <p>Trigger dropdown menus above elements by adding <code class="highlighter-rouge">.dropup</code>
+                        to
+                        the parent element.</p>
+                      <!-- Default dropup button -->
+                      <div class="btn-group dropup">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          Dropup
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div>
+                      <!-- Split dropup button -->
+                      <div class="btn-group dropup">
+                        <button type="button" class="btn btn-primary">
+                          Split dropup
+                        </button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div>
+                      <h6 class="font-weight-bold mt-3">Dropright</h6>
+                      <p>Trigger dropdown menus above elements by adding <code
+                          class="highlighter-rouge">.dropright</code>
+                        to the parent element.</p>
+                      <!-- Default dropright button -->
+                      <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          Dropright
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div>
+                      <!-- Split dropright button -->
+                      <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary">
+                          Split dropright
+                        </button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropright</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <h6 class="font-weight-bold mt-3">Dropleft</h6>
+                      <p>Trigger dropdown menus above elements by adding <code
+                          class="highlighter-rouge">.dropleft</code> to the parent element.</p>
+                      <!-- Default dropleft button -->
+                      <div class="btn-group dropleft">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          Dropleft
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div>
+                      <!-- Split dropleft button -->
+                      <div class="btn-group">
+                        <div class="btn-group dropleft" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropleft</span>
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-primary">
+                          Split dropleft
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Dropdown with Menu Content -->
+            <div class="col-lg-6">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Dropdown with Menu Contents</h6>
+                </div>
+                <div class="card-body">
+                  <h6 class="font-weight-bold">Header</h6>
+                  <p>Add a header to label sections of actions in any dropdown menu.</p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Dropdown with Header Content
+                    </button>
+                    <div class="dropdown-menu">
+                      <h6 class="dropdown-header">Dropdown header</h6>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </div>
+                  </div>
+                  <h6 class="font-weight-bold mt-3">Dividers</h6>
+                  <p>Separate groups of related menu items with a divider.</p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Dropdown with Divider Content
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Dropdown Basic and Sizing End -->
+
+          <!-- Modals Start -->
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- Modal basic -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Modal Basic</h6>
+                </div>
+                <div class="card-body">
+                  <p>Toggle a working modal demo by clicking the button below. It will slide down and fade in from the
+                    top of the page.</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    id="#myBtn">
+                    Launch demo modal
+                  </button>
+                </div>
+              </div>
+              <!-- modal vertically centered -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Modal Vertically Centered</h6>
+                </div>
+                <div class="card-body">
+                  <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center the
+                    modal.</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                    id="#modalCenter">Launch Modal Vertically Centered</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <!-- Modal with scrolling long content -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Modal with scrolling long content</h6>
+                </div>
+                <div class="card-body">
+                  <p>When modals become too long for the user’s viewport or device, they scroll independent of the page
+                    itself. Try the demo below to see what we mean.</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"
+                    id="#modalLong">Launch Modal Long</button>
+
+                  <p class="mt-3">You can also create a scrollable modal that allows scroll the modal body by adding
+                    <code class="highlighter-rouge">.modal-dialog-scrollable</code> to <code
+                      class="highlighter-rouge">.modal-dialog</code>.
+                  </p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModalScrollable" id="#modalScroll">Launch Modal Srollable Title</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modals End -->
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>You Content</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Long -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal Long</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h5 class="font-weight-bold">Title</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ac orci phasellus egestas tellus rutrum tellus. Suspendisse sed nisi lacus
+                    sed. Erat pellentesque adipiscing commodo elit at imperdiet dui. Eget dolor morbi non arcu risus
+                    quis varius quam. Elit ullamcorper dignissim cras tincidunt. At risus viverra adipiscing at in
+                    tellus integer feugiat. Dictum non consectetur a erat nam at lectus urna. Est velit egestas dui id.
+                    Sed id semper risus in hendrerit. Malesuada fames ac turpis egestas maecenas pharetra convallis
+                    posuere. Pretium vulputate sapien nec sagittis aliquam. In hendrerit gravida rutrum quisque non.
+                    Neque ornare aenean euismod elementum nisi quis eleifend quam adipiscing. Lacus luctus accumsan
+                    tortor posuere. Urna molestie at elementum eu facilisis. Neque egestas congue quisque egestas diam.
+                    Turpis egestas integer eget aliquet nibh praesent. Egestas dui id ornare arcu odio ut.</p>
+                  <h5 class="font-weight-bold">Title</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Lacinia quis vel eros donec. Nec tincidunt praesent semper feugiat nibh sed
+                    pulvinar proin gravida. Urna cursus eget nunc scelerisque viverra mauris in. Risus sed vulputate
+                    odio ut enim blandit volutpat maecenas. Etiam sit amet nisl purus in mollis nunc. Aliquet bibendum
+                    enim facilisis gravida neque convallis a. Aliquam id diam maecenas ultricies mi eget mauris. Et
+                    malesuada fames ac turpis egestas sed. Venenatis cras sed felis eget.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Scrollable -->
+          <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalScrollableTitle">Modal scrollable title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h5 class="font-weight-bold">Title</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ac orci phasellus egestas tellus rutrum tellus. Suspendisse sed nisi lacus
+                    sed. Erat pellentesque adipiscing commodo elit at imperdiet dui. Eget dolor morbi non arcu risus
+                    quis varius quam. Elit ullamcorper dignissim cras tincidunt. At risus viverra adipiscing at in
+                    tellus integer feugiat. Dictum non consectetur a erat nam at lectus urna. Est velit egestas dui id.
+                    Sed id semper risus in hendrerit. Malesuada fames ac turpis egestas maecenas pharetra convallis
+                    posuere. Pretium vulputate sapien nec sagittis aliquam. In hendrerit gravida rutrum quisque non.
+                    Neque ornare aenean euismod elementum nisi quis eleifend quam adipiscing. Lacus luctus accumsan
+                    tortor posuere. Urna molestie at elementum eu facilisis. Neque egestas congue quisque egestas diam.
+                    Turpis egestas integer eget aliquet nibh praesent. Egestas dui id ornare arcu odio ut.</p>
+                  <h5 class="font-weight-bold">Title</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Lacinia quis vel eros donec. Nec tincidunt praesent semper feugiat nibh sed
+                    pulvinar proin gravida. Urna cursus eget nunc scelerisque viverra mauris in. Risus sed vulputate
+                    odio ut enim blandit volutpat maecenas. Etiam sit amet nisl purus in mollis nunc. Aliquet bibendum
+                    enim facilisis gravida neque convallis a. Aliquam id diam maecenas ultricies mi eget mauris. Et
+                    malesuada fames ac turpis egestas sed. Venenatis cras sed felis eget.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Center -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal Vertically Centered</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Your Content
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="login.html" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="login.html" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- Container Fluid End -->
+      </div>
+      <!-- Footer Start -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy;
+              <script> document.write(new Date().getFullYear()); </script> - Developed by
+              Lee
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer End -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script th:src="@{vendor/jquery/jquery.js}"></script>
+  <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.js}"></script>
+  <script th:src="@{vendor/jquery-easing/jquery.easing.js}"></script>
+  <script th:src="@{js/admin.js}"></script>
+  <!-- Page level plugins -->
+  <script th:src="@{vendor/datatables/jquery.dataTables.js}"></script>
+  <script th:src="@{vendor/datatables/dataTables.bootstrap4.js}"></script>
+
+  <!-- Page level custom scripts -->
+  <script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable(); // ID From dataTable 
+    });
+  </script>
+</body>
+
+</html>
